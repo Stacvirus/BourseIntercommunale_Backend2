@@ -4,7 +4,6 @@ import com.pk48.BourseIntercommunale.domain.dto.AuthentificationRequest;
 import com.pk48.BourseIntercommunale.domain.dto.AuthentificationResponse;
 import com.pk48.BourseIntercommunale.domain.dto.RegistrationRequest;
 import com.pk48.BourseIntercommunale.domain.model.User;
-import com.pk48.BourseIntercommunale.domain.model.enumeration.Role;
 import com.pk48.BourseIntercommunale.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,7 +25,7 @@ public class AuthentificationService {
                 .lastName(req.getLastName())
                 .email(req.getEmail())
                 .password(passwordEncoder.encode(req.getPassword()))
-                .role(Role.USER)
+                .role(req.getRole())
                 .phone(req.getPhone())
                 .build();
         repository.save(user);

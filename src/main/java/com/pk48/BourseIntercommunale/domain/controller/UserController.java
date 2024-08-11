@@ -7,10 +7,7 @@ import com.pk48.BourseIntercommunale.domain.service.AuthentificationService;
 import com.pk48.BourseIntercommunale.domain.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -28,5 +25,15 @@ public class UserController {
     @PostMapping("/authenticate")
     public ResponseEntity<AuthentificationResponse> authenticate(@RequestBody AuthentificationRequest req) {
         return ResponseEntity.ok(service.authenticate(req));
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<String> helloUser(){
+        return ResponseEntity.ok("Hello World user");
+    }
+
+    @GetMapping("/admin")
+    public ResponseEntity<String> helloAdmin(){
+        return ResponseEntity.ok("Hello World admin");
     }
 }
